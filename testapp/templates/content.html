@@ -1,8 +1,10 @@
 {% extends "index.html" %}
-{% load staitcfiles %}
+{% load staticfiles %}
 
 {% block content %}
 <div>
-	{% for content}
+	{% for content in all_content %}
+		<p>{{content.content_text}}</p>
+	{% endfor %}
 </div>
 {% endblock %}
