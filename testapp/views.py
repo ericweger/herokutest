@@ -11,4 +11,5 @@ def index(request):
 
 def edit(request):
 	all_content = TestContent.objects
+	context = {'all_content': all_content}
 	return render(request, 'edit.html', context)
