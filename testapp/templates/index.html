@@ -1,11 +1,16 @@
 <html>
 <head>
 	<title>Database Test</title>
+	<style type="text/css">
+		.control
+	</style>
 </head>
 <body>
 	<div class="control"></div>
 	<div class="content">
-		{% block content %}{% endblock %}
+		{% for content in all_content %}
+			<p>{{content.content_text}}</p>
+		{% endfor %}
 	</div>
 </body>
 </html>
