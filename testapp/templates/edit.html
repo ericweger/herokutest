@@ -1,15 +1,14 @@
-{% extends 'index.html' %}
+{% extends "index.html" %}
 {% load staticfiles %}
 
 {% block title %}Edit Field{% endblock %}
 
 {% block control %}
-
 <form action="">
 	Select field to edit
 	<select id="content_id" oninput="Autofill()">
 		{% for content in all_content %}
-			<option value="{{% content.id %}}">{{% content.content_name %}}</option>
+			<option value="{{content.id}}">{{content.content_name}}</option>
 
 		{% endfor %}
 	</select>
@@ -18,7 +17,7 @@
 	<input type="text" id="content_name" name="content_name">
 	<br><br>
 	Content Text
-	<textarea id="content_text" name="content_text" rows="10" cols="30">{{% all_content.0.content_text %}}</textarea>
+	<textarea id="content_text" name="content_text" rows="10" cols="30">{{all_content.0.content_text}}</textarea>
 	<br><br>
 	<input type="submit" value="Add">
 </form>
