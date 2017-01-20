@@ -17,17 +17,19 @@
 <form action="">
 	Select field to edit<br>
 	<select id="content_choice" oninput="Autofill()">
-		{% for content in all_content %}
+		{% for content in all_content|dictsort:"id" %}
 			<option value="{{content.id}}" data-content-name="{{content.content_name}}" data-content-text="{{content.content_text}}">{{content.content_name}}</option>
 
 		{% endfor %}
 	</select>
 	<br><br>
+	{% with content=all_content|dictsort:"id" %}
 	Content Name<br>
-	<input type="text" id="content_name" name="content_name" value="{{all_content.0.content_name}}">
+	<input type="text" id="content_name" name="content_name" value="{{content.0.content_name}}">
 	<br><br>
 	Content Text<br>
-	<textarea id="content_text" name="content_text" rows="10" cols="30">{{all_content.0.content_text}}</textarea>
+	<textarea id="content_text" name="content_text" rows="10" cols="30">{{content.0.content_text}}</textarea>
+	{% endwith %}
 	<br><br>
 	<input type="submit" value="Add">
 </form>
