@@ -7,7 +7,10 @@
 			background-color: #D0CCD0;
 			font-family: Helvetica, Arial, sans-serif;
 			height: 100%;
-			padding: 10px;
+		}
+		.control-inner {
+			width: 100%;
+			margin: 10px;
 		}
 		.block-outer {
 			width: 100%;
@@ -18,32 +21,40 @@
 			background-color: #F0F0F0;
 			font-family: Helvetica, Arial, sans-serif;
 			height: 100%;
-			padding: 10px;
+		}
+		.content-inner {
+			width: 100%;
+			margin: 10px;
 		}
 	</style>
 	<script type="text/javascript">
 		function Update() {
-			
+
 		}
 	</script>
+	{% block script %}{% endblock %}
 </head>
 <body>
 	<div class="block-outer">
 		<div class="control">
-			{% block control %}
-			<form action="" onsubmit="Update()">
-				New Content to Add:
-				<br><br>
-				<textarea name="content" rows="10" cols="30"></textarea>
-				<br><br>
-				<input type="submit" value="Add">
-			</form>
-			{% endblock control%}
+			<div class="control-inner">
+				{% block control %}
+				<form action="" onsubmit="Update()">
+					New Content to Add:
+					<br><br>
+					<textarea name="content" rows="10" cols="30"></textarea>
+					<br><br>
+					<input type="submit" value="Add">
+				</form>
+				{% endblock control%}
+			</div>
 		</div>
 		<div class="content">
-			{% for content in all_content %}
-				<p>{{content.content_text}}</p>
-			{% endfor %}
+			<div class="content-inner">
+				{% for content in all_content %}
+					<p>{{content.content_text}}</p>
+				{% endfor %}
+			</div>
 		</div>
 	</div>
 </body>
