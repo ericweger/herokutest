@@ -1,16 +1,50 @@
 <html>
 <head>
-	<title>Database Test</title>
+	<title>{% block title %}Database Test{% endblock %}</title>
 	<style type="text/css">
-		.control
+		.control {
+			width: 50%;
+			background-color: #D0CCD0;
+			font-family: Helvetica, Arial, sans-serif;
+			height: 100%;
+			padding: 10px;
+		}
+		.block-outer {
+			width: 100%;
+			display: flex;
+		}
+		.content {
+			width: 50%;
+			background-color: #F0F0F0;
+			font-family: Helvetica, Arial, sans-serif;
+			height: 100%;
+			padding: 10px;
+		}
 	</style>
+	<script type="text/javascript">
+		function Update() {
+			
+		}
+	</script>
 </head>
 <body>
-	<div class="control"></div>
-	<div class="content">
-		{% for content in all_content %}
-			<p>{{content.content_text}}</p>
-		{% endfor %}
+	<div class="block-outer">
+		<div class="control">
+			{% block control %}
+			<form action="" onsubmit="Update()">
+				New Content to Add:
+				<br><br>
+				<textarea name="content" rows="10" cols="30"></textarea>
+				<br><br>
+				<input type="submit" value="Add">
+			</form>
+			{% endblock control%}
+		</div>
+		<div class="content">
+			{% for content in all_content %}
+				<p>{{content.content_text}}</p>
+			{% endfor %}
+		</div>
 	</div>
 </body>
 </html>
